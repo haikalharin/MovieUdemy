@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+    static String MOVIE_API = BuildConfig.MovieSecAPIKEY;
 
     RecyclerView recycler;
     List<ResultsItem> dataMovie = new ArrayList<>();
@@ -44,7 +45,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void getDataOnline() {
-        Call<ResponseMovie> request = RetrofitConfig.getApiServiice().ambilDataMovie("9cefeeb6131b05983b25aad9ed2200ae");
+
+        Call<ResponseMovie> request = RetrofitConfig.getApiServiice().ambilDataMovie(MOVIE_API);
         request.enqueue(new Callback<ResponseMovie>() {
             @Override
             public void onResponse(Call<ResponseMovie> call, Response<ResponseMovie> response) {
